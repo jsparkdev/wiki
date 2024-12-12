@@ -14,7 +14,7 @@
       @apply text-lg font-semibold py-3 text-balance;
     }
     p {
-      @apply text-pretty;
+      @apply text-pretty py-2;
       code {
         @apply text-purple-700;
       }
