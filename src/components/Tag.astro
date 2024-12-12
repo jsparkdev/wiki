@@ -1,0 +1,16 @@
+---
+import type { TechStack } from "~/types";
+import { tagIconMap } from "~/utils/tagIcons";
+
+interface Props {
+  tag: TechStack;
+}
+
+const { tag } = Astro.props;
+const Icon = tagIconMap[tag];
+---
+
+<span class="text-xs border px-2 py-1 rounded-xl flex items-center">
+  <Icon size={16} class="mr-1" />
+  {tag}
+</span>

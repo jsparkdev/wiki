@@ -4,7 +4,10 @@ import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
   site: "https://wiki.jspark.dev",
-  integrations: [tailwind(), sitemap()],
+  integrations: [tailwind({ applyBaseStyles: false }), sitemap()],
+  experimental: {
+    svg: true,
+  },
   markdown: {
     shikiConfig: {
       theme: "andromeeda",

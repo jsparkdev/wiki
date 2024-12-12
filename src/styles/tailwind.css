@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  article {
+    h2 {
+      @apply text-2xl font-semibold py-3 text-balance;
+    }
+    h3 {
+      @apply text-xl font-semibold py-3 text-balance;
+    }
+    h4 {
+      @apply text-lg font-semibold py-3 text-balance;
+    }
+    p {
+      @apply text-pretty;
+      code {
+        @apply text-purple-700;
+      }
+    }
+    pre {
+      @apply px-2 xl:px-3 py-3 my-2 rounded-lg;
+    }
+  }
+}

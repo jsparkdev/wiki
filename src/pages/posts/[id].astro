@@ -1,6 +1,9 @@
 ---
 import Layout from "~/layouts/Layout.astro";
 import { getCollection, render } from "astro:content";
+import Home from "~/assets/home.svg";
+import Tag from "~/components/Tag.astro";
+import type { TechStack } from "~/types";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
@@ -15,12 +18,25 @@ const { Content } = await render(post);
 ---
 
 <Layout title={post.data.title} description={post.data.description}>
-  <main>
-    <h1>{post.data.title}</h1>
-    <ul>
-      {post.data.tags.map((tag) => <li>{tag}</li>)}
-    </ul>
-    <article>
+  <main class="pb-12 px-3 max-w-[1200px] mx-auto">
+    <header class="sticky pt-4 top-0 z-100 bg-white">
+      <nav class="flex gap-1.5">
+        <a href="/" class="flex items-center">
+          <Home size={20} class="hover:text-blue-400" title="홈페이지로 이동" />
+        </a>
+        <ul class="py-1.5 flex gap-2">
+          {
+            post.data.tags.map((tag) => (
+              <li>
+                <Tag tag={tag as TechStack} />
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+      <h1 class="font-bold text-3xl pb-4">{post.data.title}</h1>
+    </header>
+    <article class="border-t text-sm xl:text-lg">
       <Content />
     </article>
   </main>
