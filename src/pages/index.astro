@@ -1,20 +1,39 @@
 ---
 import Layout from "~/layouts/Layout.astro";
 import { DESCRIPTION, TITLE } from "~/consts";
-
 import { getCollection } from "astro:content";
-const posts = await getCollection("posts");
+import { tagIconMap } from "~/utils/tagIcons";
+import type { TechStack } from "~/types";
+
+const posts = (await getCollection("posts")).map((post) => {
+  const iconList = post.data.tags.map((tag) => tagIconMap[tag as TechStack]);
+  return {
+    ...post,
+    iconList,
+  };
+});
 ---
 
 <Layout title={TITLE} description={DESCRIPTION}>
-  <main>
-    <h1>전체 게시물</h1>
+  <main class="pb-12 pt-10 px-4 max-w-[600px] mx-auto">
+    <h1 class="font-bold text-3xl pb-4">전체 게시물</h1>
     <section>
-      <ul>
+      <ul class="flex flex-col gap-2">
         {
           posts.map((post) => (
-            <li>
-              <a href={`/posts/${post.id}`}>{post.data.title}</a>
+            <li class="flex items-center hover:opacity-70 transition-opacity">
+              <div class="flex">
+                {post.iconList.map((Icon, idx) => (
+                  <Icon
+                    size={24}
+                    class="mr-1"
+                    transition:name={`${post.id}-${idx}`}
+                  />
+                ))}
+              </div>
+              <a href={`/posts/${post.id}`} transition:name={post.id}>
+                {post.data.title}
+              </a>
             </li>
           ))
         }

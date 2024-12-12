@@ -26,15 +26,20 @@ const { Content } = await render(post);
         </a>
         <ul class="py-1.5 flex gap-2">
           {
-            post.data.tags.map((tag) => (
+            post.data.tags.map((tag, index) => (
               <li>
-                <Tag tag={tag as TechStack} />
+                <Tag
+                  tag={tag as TechStack}
+                  transitionName={`${post.id}-${index}`}
+                />
               </li>
             ))
           }
         </ul>
       </nav>
-      <h1 class="font-bold text-3xl pb-4">{post.data.title}</h1>
+      <h1 class="font-bold text-3xl pb-4">
+        <span transition:name={post.id}>{post.data.title}</span>
+      </h1>
     </header>
     <article class="border-t text-sm xl:text-lg">
       <Content />

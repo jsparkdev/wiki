@@ -4,13 +4,14 @@ import { tagIconMap } from "~/utils/tagIcons";
 
 interface Props {
   tag: TechStack;
+  transitionName: string;
 }
 
-const { tag } = Astro.props;
+const { tag, transitionName } = Astro.props;
 const Icon = tagIconMap[tag];
 ---
 
 <span class="text-xs border px-2 py-1 rounded-xl flex items-center">
-  <Icon size={16} class="mr-1" />
+  <Icon size={16} class="mr-1" transition:name={transitionName} />
   {tag}
 </span>
