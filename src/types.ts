@@ -1,5 +1,5 @@
-import type { techStack } from "./consts";
+import type { tags } from "./consts";
 
-type TechStack = typeof techStack[number];
+type Tag = (typeof tags)[number];
 
-export type { TechStack };
+export type { Tag };

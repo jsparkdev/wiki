@@ -18,20 +18,26 @@ const { Content } = await render(post);
 
 <Layout title={post.data.title} description={post.data.description}>
   <main class="pb-12 px-3 max-w-[1200px] mx-auto">
-    <header class="sticky pt-4 top-0 z-100 bg-white">
+    <header class="sticky pt-4 top-0 z-100 bg-white border-b border-purple-200">
       <nav class="flex gap-1.5">
         <a href="/" class="flex items-center">
-          <Home size={20} class="hover:text-blue-400" title="홈페이지로 이동" />
+          <Home
+            size={20}
+            class="hover:text-purple-700"
+            title="홈페이지로 이동"
+          />
         </a>
-        <div class="py-1.5">
-          <Tag tag={post.data.tag} transitionName={`${post.id}-icon`} />
-        </div>
+        <Tag
+          tag={post.data.tag}
+          transition={`${post.id}-icon`}
+          class="my-1.5"
+        />
       </nav>
       <h1 class="font-bold text-3xl pb-4">
         <span transition:name={post.id}>{post.data.title}</span>
       </h1>
     </header>
-    <article class="border-t text-sm xl:text-lg">
+    <article class="text-sm xl:text-lg">
       <Content />
     </article>
   </main>

@@ -3,18 +3,24 @@
 @tailwind utilities;
 
 @layer base {
+  a {
+    @apply hover:opacity-70 transition-opacity;
+  }
   article {
     h2 {
-      @apply text-2xl font-semibold py-3 text-balance;
+      @apply text-2xl font-semibold pt-3 text-balance;
     }
     h3 {
-      @apply text-xl font-semibold py-3 text-balance;
+      @apply text-xl font-semibold pt-3 text-balance;
     }
     h4 {
-      @apply text-lg font-semibold py-3 text-balance;
+      @apply text-lg font-semibold pt-3 text-balance;
     }
     p {
       @apply text-pretty py-2;
+      & + & {
+        @apply pt-0;
+      }
       code {
         @apply text-purple-700;
       }

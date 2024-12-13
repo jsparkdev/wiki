@@ -4,7 +4,8 @@ import { DESCRIPTION, TITLE } from "~/consts";
 import { getCollection } from "astro:content";
 import { tagIconMap } from "~/utils/tagIcons";
 
-const posts = (await getCollection("posts")).map((post) => {
+const allPosts = await getCollection("posts");
+const posts = allPosts.map((post) => {
   const icon = tagIconMap[post.data.tag];
   return {
     ...post,
@@ -16,25 +17,21 @@ const posts = (await getCollection("posts")).map((post) => {
 <Layout title={TITLE} description={DESCRIPTION}>
   <main class="pb-12 pt-10 px-4 max-w-[600px] mx-auto">
     <h1 class="font-bold text-3xl pb-4">전체 게시물</h1>
-    <section>
-      <ul class="flex flex-col gap-2">
-        {
-          posts.map((post) => (
-            <li class="flex items-center hover:opacity-70 transition-opacity">
-              <div class="flex">
-                <post.icon
-                  size={24}
-                  class="mr-1"
-                  transition:name={`${post.id}-icon`}
-                />
-              </div>
-              <a href={`/posts/${post.id}`} transition:name={post.id}>
-                {post.data.title}
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </section>
+    <ul class="flex flex-col gap-2">
+      {
+        posts.map((post) => (
+          <li>
+            <a href={`/posts/${post.id}`} class="flex items-center">
+              <post.icon
+                size={24}
+                class="mr-1"
+                transition:name={`${post.id}-icon`}
+              />
+              <span transition:name={post.id}>{post.data.title}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
   </main>
 </Layout>

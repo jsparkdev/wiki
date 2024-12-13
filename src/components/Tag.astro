@@ -1,17 +1,23 @@
 ---
-import type { TechStack } from "~/types";
+import type { Tag } from "~/types";
+import type { HTMLAttributes } from "astro/types";
 import { tagIconMap } from "~/utils/tagIcons";
 
-interface Props {
-  tag: TechStack;
-  transitionName: string;
+interface Props extends HTMLAttributes<"span"> {
+  tag: Tag;
+  transition: string;
 }
 
-const { tag, transitionName } = Astro.props;
+const { tag, transition, ...attrs } = Astro.props;
 const Icon = tagIconMap[tag];
 ---
 
-<span class="text-xs border px-2 py-1 rounded-xl flex items-center">
-  <Icon size={16} class="mr-1" transition:name={transitionName} />
+<span
+  class:list={[
+    "text-xs border px-2 py-1 rounded-xl flex items-center",
+    attrs.class,
+  ]}
+>
+  <Icon size={16} class="mr-1" transition:name={transition} />
   {tag}
 </span>
