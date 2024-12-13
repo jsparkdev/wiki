@@ -3,10 +3,9 @@ import Layout from "~/layouts/Layout.astro";
 import { DESCRIPTION, TITLE } from "~/consts";
 import { getCollection } from "astro:content";
 import { tagIconMap } from "~/utils/tagIcons";
-import type { TechStack } from "~/types";
 
 const posts = (await getCollection("posts")).map((post) => {
-  const icon = tagIconMap[post.data.tag as TechStack];
+  const icon = tagIconMap[post.data.tag];
   return {
     ...post,
     icon,

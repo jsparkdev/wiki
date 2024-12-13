@@ -3,7 +3,6 @@ import Layout from "~/layouts/Layout.astro";
 import { getCollection, render } from "astro:content";
 import Home from "~/assets/home.svg";
 import Tag from "~/components/Tag.astro";
-import type { TechStack } from "~/types";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
@@ -25,10 +24,7 @@ const { Content } = await render(post);
           <Home size={20} class="hover:text-blue-400" title="홈페이지로 이동" />
         </a>
         <div class="py-1.5">
-          <Tag
-            tag={post.data.tag as TechStack}
-            transitionName={`${post.id}-icon`}
-          />
+          <Tag tag={post.data.tag} transitionName={`${post.id}-icon`} />
         </div>
       </nav>
       <h1 class="font-bold text-3xl pb-4">

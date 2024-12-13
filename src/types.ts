@@ -1,1 +1,3 @@
-export type TechStack = "TypeScript" | "React";
+type TechStack = "React" | "TypeScript";
+
+export type { TechStack };
