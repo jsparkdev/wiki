@@ -6,10 +6,10 @@ import { tagIconMap } from "~/utils/tagIcons";
 import type { TechStack } from "~/types";
 
 const posts = (await getCollection("posts")).map((post) => {
-  const iconList = post.data.tags.map((tag) => tagIconMap[tag as TechStack]);
+  const icon = tagIconMap[post.data.tag as TechStack];
   return {
     ...post,
-    iconList,
+    icon,
   };
 });
 ---
@@ -23,13 +23,11 @@ const posts = (await getCollection("posts")).map((post) => {
           posts.map((post) => (
             <li class="flex items-center hover:opacity-70 transition-opacity">
               <div class="flex">
-                {post.iconList.map((Icon, idx) => (
-                  <Icon
-                    size={24}
-                    class="mr-1"
-                    transition:name={`${post.id}-${idx}`}
-                  />
-                ))}
+                <post.icon
+                  size={24}
+                  class="mr-1"
+                  transition:name={`${post.id}-icon`}
+                />
               </div>
               <a href={`/posts/${post.id}`} transition:name={post.id}>
                 {post.data.title}

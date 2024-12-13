@@ -1,8 +1,7 @@
 ---
 title: 객체의 타입
 description: TypeScript에서 객체의 타입을 정의하는 방법에 대해 알아봅니다.
-tags:
-  - TypeScript
+tag: TypeScript
 ---
 
 ## 타입 별칭과 인터페이스

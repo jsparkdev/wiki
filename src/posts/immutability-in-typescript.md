@@ -1,8 +1,7 @@
 ---
 title: 불변성
 description: TypeScript에서 불변성을 다루는 방법에 대해 알아봅니다.
-tags:
-  - TypeScript
+tag: TypeScript
 ---
 
 ## 변수

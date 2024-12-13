@@ -1,8 +1,7 @@
 ---
 title: 배열과 튜플
 description: TypeScript에서 배열과 튜플을 다루는 방법에 대해 알아봅니다.
-tags:
-  - TypeScript
+tag: TypeScript
 ---
 
 ## 배열
