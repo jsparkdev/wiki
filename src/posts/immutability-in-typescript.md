@@ -7,7 +7,7 @@ tags:
 
 ## 변수
 
-JavaScript에서 `let`으로 선언한 변수읩 값을 변경할 수 있습니다. 하지만 `const`로 선언한 변수의 값은 변경할 수 없습니다.
+JavaScript에서 `let`으로 선언한 변수의 값을 변경할 수 있습니다. 하지만 `const`로 선언한 변수의 값은 변경할 수 없습니다.
 
 그래서 각각 추론되는 타입도 달라집니다.
 
@@ -20,19 +20,19 @@ const name = "Jun"; // "Jun"
 
 ## 객체
 
-또한, JavaScript 객체의 프로퍼티도 언제든지 변경될 수 있기 때문에 더 넓은 타입으로 추론됩니다. 이 경우 다음과 같은 문제가 발생할 수 있습니다.
+JavaScript 객체의 프로퍼티도 언제든지 변경될 수 있기 때문에 더 넓은 타입으로 추론됩니다. 이 경우 다음과 같은 문제가 발생할 수 있습니다.
 
 ```ts
 type Device ={
-    os: "Linux" | "Windows" | "OSX";
+  os: "Linux" | "Windows" | "OSX";
 }
 
 function getDevice(device: Device) {
-    // ...
+  // ...
 }
 
 const myComputer = {
-    os: "OSX" // os: string
+  os: "OSX" // os: string
 }
 
 getDevice(myComputer) // 오류 발생
@@ -54,21 +54,21 @@ getDevice({ os: "OSX" })
 
 ```ts
 const myComputer: Device = {
-    os: "OSX" // os: "Linux" | "Windows" | "OSX"
+  os: "OSX" // os: "Linux" | "Windows" | "OSX"
 }
 
 getDevice(myComputer)
 ```
 
-대부분의 경우 객체는 변수에 저장하여 사용하기 때문에, 두 번째 방법을 사용할 것입니다. 하지만, 이는 객체를 더 넓은 범위로 추론하여 문제를 제대로 해결하지 못할 수도 있습니다.
+대부분의 객체는 변수에 저장해 사용하기 때문에, 두 번째 방법을 사용할 것입니다. 하지만, 이는 객체를 더 넓은 범위로 추론합니다.
 
 ## as const
 
-객체의 모든 프로퍼티를 불변으로 처리하여 리터럴 타입으로 추론합니다.
+객체의 모든 프로퍼티를 불변으로 처리하여 리터럴 타입으로 추론할 수 있습니다.
 
 ```ts
 const myComputer = {
-    os: "OSX" // os: "OSX"
+  os: "OSX" // os: "OSX"
 } as const
 
 getDevice(myComputer)
@@ -78,7 +78,7 @@ getDevice(myComputer)
 
 ```ts
 const myComputer = Object.freeze({
-    os: "OSX" // os: "OSX"
+  os: "OSX" // os: "OSX"
 })
 ```
 
