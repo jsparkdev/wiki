@@ -8,8 +8,6 @@ tag: TypeScript
 
 JavaScript에서 `let`으로 선언한 변수의 값을 변경할 수 있습니다. 하지만 `const`로 선언한 변수의 값은 변경할 수 없습니다.
 
-그래서 각각 추론되는 타입도 달라집니다.
-
 ```ts
 let name = "Jun"; // string
 const name = "Jun"; // "Jun"
@@ -41,7 +39,7 @@ getDevice(myComputer) // 오류 발생
 
 ### 인라인 객체 사용
 
-함수 인자에 인라인으로 객체를 전달하면, 변경이 불가능하므로 타입을 더 구체적으로 추론합니다.
+함수 인자로 인라인 객체를 전달하면 변경이 불가능하므로 리터럴 타입으로 추론합니다.
 
 ```ts
 getDevice({ os: "OSX" })
