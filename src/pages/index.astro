@@ -1,17 +1,19 @@
 ---
 import Layout from "~/layouts/Layout.astro";
-import { DESCRIPTION, TITLE } from "~/consts";
 import { getCollection } from "astro:content";
-import { tagIconMap } from "~/utils/tagIcons";
+import { TAG_ICONS } from "~/utils/icons";
+import { METADATA } from "~/utils/constants";
 
 const allPosts = await getCollection("posts");
 const posts = allPosts.map((post) => {
-  const icon = tagIconMap[post.data.tag];
+  const icon = TAG_ICONS[post.data.tag];
   return {
     ...post,
     icon,
   };
 });
+
+const { TITLE, DESCRIPTION } = METADATA;
 ---
 
 <Layout title={TITLE} description={DESCRIPTION}>

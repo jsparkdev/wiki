@@ -1,7 +1,7 @@
 ---
-import type { Tag } from "~/types";
 import type { HTMLAttributes } from "astro/types";
-import { tagIconMap } from "~/utils/tagIcons";
+import type { Tag } from "~/utils/types";
+import { TAG_ICONS } from "~/utils/icons";
 
 interface Props extends HTMLAttributes<"span"> {
   tag: Tag;
@@ -9,7 +9,7 @@ interface Props extends HTMLAttributes<"span"> {
 }
 
 const { tag, transition, ...attrs } = Astro.props;
-const Icon = tagIconMap[tag];
+const Icon = TAG_ICONS[tag];
 ---
 
 <span
