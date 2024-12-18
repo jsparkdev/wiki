@@ -1,10 +1,10 @@
 import { defineConfig } from "astro/config";
-import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
+import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   site: "https://wiki.jspark.dev",
-  integrations: [tailwind({ applyBaseStyles: false }), sitemap()],
+  integrations: [sitemap()],
   experimental: {
     svg: true,
   },
@@ -14,6 +14,7 @@ export default defineConfig({
     },
   },
   vite: {
+    plugins: [tailwindcss()],
     build: {
       target: "esnext",
     },
